@@ -17,13 +17,12 @@
     <script type="text/javascript">
 
         $(document).on("pagecreate", function () {
-            $("#input_customer").on('change', function() {
-               if( $(this).val() == '' ){
+            $("#input_customer").on('change', function () {
+                if ($(this).val() == '') {
                     $("#loan-table thead").remove();
                     $("#loan-table tbody").remove();
-               }
+                }
             });
-
 
 
             $("#list_loans").on("tap", "li", function (event) {
@@ -35,19 +34,78 @@
                     "name": $ul.text(),
                 }, function (data) {
                     $("#loan-table thead").remove();
-                    var loans =
-                        "<thead><tr><th data-priority='1'>Name</th><th data-priority='2'>Approval Date</th><th data-priority='3'>Appraisal Ordered</th><th data-priority='4'>Appraisal Due</th><th data-priority='5'>Appraisal Amount</th></tr></thead><tbody>";
+                    var loans = ""
 
                     console.log(data.loan_details.customer_name);
-                    loans += "<tr>"
+                    loans += "<tr>";
+                    loans += "<td>NAME</td>";
                     loans += "<td>" + data.loan_details.customer_name + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>APPROVAL</td>";
                     loans += "<td>" + data.loan_details.approval_date + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>APPRAISAL ORDERED</td>";
                     loans += "<td>" + data.loan_details.appraisal_ordered + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>APPRAISAL DUE</td>";
                     loans += "<td>" + data.loan_details.appraisal_due + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>AMOUNT</td>";
                     loans += "<td>" + data.loan_details.appraisal_amount + "</td>";
-                    loans +="</tr>";
-                    loans +="</tbody>";
-                    loans +="</thead>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>APPRAISAL RECEIVED</td>";
+                    loans += "<td>" + data.loan_details.appraisal_received + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>TITLE REQUESTED</td>";
+                    loans += "<td>" + data.loan_details.title_requested + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>TITLE COMMITMENT</td>";
+                    loans += "<td>" + data.loan_details.title_commitment + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>FLOOD DETAILS</td>";
+                    loans += "<td>" + data.loan_details.flood_details + "</td>";
+                    loans += "</tr>"
+
+                    loans += "<tr>";
+                    loans += "<td>FLOOD INSURANCE</td>";
+                    loans += "<td>" + data.loan_details.flood_ins_received + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>LOAN INSURANCE</td>";
+                    loans += "<td>" + data.loan_details.flood_ins_received + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>TITLE COMPANY</td>";
+                    loans += "<td>" + data.loan_details.title_company + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>FLOOD DETAILS</td>";
+                    loans += "<td>" + data.loan_details.flood_details + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>ATTORNEY</td>";
+                    loans += "<td>" + data.loan_details.attorney + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>EXPECTED CLOSING</td>";
+                    loans += "<td>" + data.loan_details.closing_expected + "</td>";
+                    loans += "</tr>"
+                    loans += "<tr>";
+                    loans += "<td>ADDITIONAL</td>";
+                    loans += "<td>" + data.loan_details.information_needed + "</td>";
+                    loans += "</tr>"
+
+
+
+
 
                     $("#loan-table").append(loans);
                 });
@@ -106,17 +164,6 @@
 
         <div id="loans">
             <table data-role="tableview" id="loan-table" data-mode="reflow" class="ui-responsive">
-                <!--<thead>-->
-                <!--<tr>-->
-                    <!--<th data-priority="1">Tag</th>-->
-                    <!--<th data-priority="2">Age</th>-->
-                    <!--<th data-priority="3">Sex</th>-->
-                    <!--<th data-priority="4">Status</th>-->
-                <!--</tr>-->
-                <!--</thead>-->
-                <!--<tbody>-->
-
-                <!--</tbody>-->
             </table>
         </div>
 
